@@ -24,7 +24,6 @@ require 'checkdate.php';
  jQuery( document ).ready(function() {
 		jQuery("#numberofdays").empty();
 		jQuery("#resultbox").hide();
-
 		jQuery('#start_date').datetimepicker({
 		lang:'en'
 		});
@@ -102,8 +101,7 @@ require 'checkdate.php';
          <h1 class="text-center">Date Calculator</h1>
     </div>
     <h4 id='ct' ></h4>
-
-<div class="row">
+	<div class="row">
     <div class="col-lg-12 center">
         <div class="card mt-2 mx-auto p-2 bg-light">
             <form method="post" name="dateform" id="dateform">
@@ -111,11 +109,12 @@ require 'checkdate.php';
                     <div class="container">
                             <div class="controls ">
                                 <div class="row">
-								<div class="col-md-2"></div>
+									<div class="col-md-2"></div>
                                     <div class="col-md-4">
                                         <div class="form-group"> 
                                             <label for="form_name"><h4><b>Start Date*</b></h4></label> 
-                                            <input type="text" autocomplete="off" placeholder="Enter Start Date" name="start_date" id="start_date" class="form-control" required="required" data-error="start date is required."> </div>
+                                            <input type="text" autocomplete="off" placeholder="Enter Start Date" name="start_date" id="start_date" class="form-control" required="required"> 
+										</div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group"> <label for="form_need"><h4><b>Start Date Timezone</b></h4></label> 
@@ -131,7 +130,7 @@ require 'checkdate.php';
                                     </div>
                                 </div>
                                 <div class="row">
-								<div class="col-md-2"></div>
+									<div class="col-md-2"></div>
                                     <div class="col-md-4">
                                         <div class="form-group"> 
                                             <label for="form_name"><h4><b>End Date *</b></h4></label> 
@@ -173,19 +172,18 @@ require 'checkdate.php';
                         <h3><center>Result</center></h3>
                         <div class="controls row ">
                             <table class="table">
-                                    <thead class="thead-dark">
-                                        <tr><th colspan="3">  <span id="dateselected" ></span>
-                                        <small>(Not including the end date.)</small></th></tr>
-                                    </thead>
-                                    <tbody id="numberofdays" ></tbody>
+								<thead class="thead-dark">
+									<tr><th colspan="3">  <span id="dateselected" ></span>
+									<small>(Not including the end date.)</small></th></tr>
+								</thead>
+								<tbody id="numberofdays" ></tbody>
                             </table>
                         </div>
-                         </div>
+                    </div>
                 </div>
             </div>
         </div>
         </div>
     </div> 
- </div>
 </body>
 </html>

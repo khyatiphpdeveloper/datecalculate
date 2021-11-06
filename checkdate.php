@@ -96,13 +96,14 @@ public static function calculate_time($number_of_days,$hour,$minute,$second,$i) 
     	break;
 	    default:
 		return 0;
+		break;
 	}
 }
 }
 if(isset($_POST['start_date']) && isset($_POST['end_date'])) 
 {
 	$CDate = new CDate();
-	echo $CDate->calculate_date($_POST['start_date'],$_POST['end_date'],2); //function third parameter is optional 1:  hours , 2: minutes, 3: seconds 
+	echo $CDate->calculate_date($_POST['start_date'],$_POST['end_date'],1); //function third parameter is optional 1:  hours , 2: minutes, 3: seconds 
 }
 
 ?>
