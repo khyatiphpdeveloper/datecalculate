@@ -40,15 +40,15 @@ public function calculate_date($start_date,$end_date,$k=0)
 	$startdate= strtotime($startdate->format('Y-m-d H:i:s')); //convert date object to time i.e 1635721200
 	$enddate= strtotime($enddate->format('Y-m-d H:i:s')); //convert date object to time i.e 1637142600
 
-	//calculate working days between two dates start
-	$workingDays = 0;
+	//calculate week days between two dates start
+	$weekDays = 0;
 
 	for($i=$startdate; $i<$enddate; $i = $i+(60*60*24) ) //24 hours = 86400 seconds
 	{
-		if(date("N",$i) <= 5) $workingDays = $workingDays + 1;
+		if(date("N",$i) <= 5) $weekDays = $weekDays + 1;
 	}
-	$datearr['working_days']=$workingDays;
-	//calculate working days between two dates end
+	$datearr['week_days']=$weekDays;
+	//calculate week days between two dates end
 
 	//Number of days between two dates 
 	$start_date = strtotime($start_date);
@@ -91,10 +91,10 @@ public static function calculate_time($number_of_days,$hour,$minute,$second,$i) 
 		break;
 	  case 3: //convert into seconds
 		$sm=(($hour * 3600) + ($minute * 60) + $second);
-	   $seconds=floor(($number_of_days)*24*60*60);
+	    $seconds=floor(($number_of_days)*24*60*60);
 		return ($seconds+$sm);
     	break;
-	  default:
+	    default:
 		return 0;
 	}
 }
@@ -102,7 +102,7 @@ public static function calculate_time($number_of_days,$hour,$minute,$second,$i) 
 if(isset($_POST['start_date']) && isset($_POST['end_date'])) 
 {
 	$CDate = new CDate();
-	echo $CDate->calculate_date($_POST['start_date'],$_POST['end_date'],3); //function third parameter is optional 1:  hours , 2: minutes, 3: seconds 
+	echo $CDate->calculate_date($_POST['start_date'],$_POST['end_date'],2); //function third parameter is optional 1:  hours , 2: minutes, 3: seconds 
 }
 
 ?>

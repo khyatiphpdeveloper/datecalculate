@@ -28,7 +28,6 @@ require 'checkdate.php';
 		jQuery('#start_date').datetimepicker({
 		lang:'en'
 		});
-
 		jQuery('#end_date').datetimepicker({
 		lang:'en'
 		});
@@ -63,14 +62,9 @@ require 'checkdate.php';
 				var jsonData = JSON.parse(response);
                 jQuery("#dateselected").text("From: "+ jQuery("#start_date").val() +"  "+ stimezone +" Time To: "+ jQuery("#end_date").val() +"  "+ etimezone + " " );
 				jQuery( "#numberofdays" ).append("<tr><td>Diffrence between two timezone: "+jsonData.days +" days,  " +jsonData.hours +" hours " +jsonData.minutes +" minutes and " +jsonData.seconds  +" seconds </p>" );
-               
                 jQuery( "#numberofdays" ).append( "<tr><td>Number of days between two datetime : <b>"+jsonData.number_of_days+"</b> day(s) </td></tr>" );
-               
-
-				jQuery( "#numberofdays" ).append( "<tr><td>Number of Working days between two datetime : <b>"+jsonData.working_days+"</b> working day(s)</td></tr>" );
-                
+				jQuery( "#numberofdays" ).append( "<tr><td>Number of Weekdays between two datetime : <b>"+jsonData.week_days+"</b> working day(s)</td></tr>" );
                 jQuery( "#numberofdays" ).append( "<tr><td>Number of Weeks between two datetime : <b>"+jsonData.weeks+"</b> week(s)</td></tr>" );
-               
                 if(jsonData.total_hours)
                 {
                     jQuery( "#numberofdays" ).append( "<tr><td>Number of hours between two datetime : <b>"+jsonData.total_hours+"</b> hours(s)</td></tr>" );
@@ -87,16 +81,8 @@ require 'checkdate.php';
        });
      });
 	});
-	</script>
+</script>
 <style>
-    body {
-    font-family: 'Lato', sans-serif
-}
-
-h1 {
-    margin-bottom: 40px
-}
-
 .card {
     margin-left: 10px;
     margin-right: 10px
@@ -115,7 +101,7 @@ h1 {
      <div class="mt-5 ">
          <h1 class="text-center">Date Calculator</h1>
     </div>
-    <span id='ct' ></span>
+    <h4 id='ct' ></h4>
 
 <div class="row">
     <div class="col-lg-12 center">
@@ -123,15 +109,16 @@ h1 {
             <form method="post" name="dateform" id="dateform">
                 <div class="card-body bg-light">
                     <div class="container">
-                            <div class="controls">
+                            <div class="controls ">
                                 <div class="row">
-                                    <div class="col-md-6">
+								<div class="col-md-2"></div>
+                                    <div class="col-md-4">
                                         <div class="form-group"> 
-                                            <label for="form_name">Start Date *</label> 
+                                            <label for="form_name"><h4><b>Start Date*</b></h4></label> 
                                             <input type="text" autocomplete="off" placeholder="Enter Start Date" name="start_date" id="start_date" class="form-control" required="required" data-error="start date is required."> </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group"> <label for="form_need">Start Date Timezone</label> 
+                                    <div class="col-md-4">
+                                        <div class="form-group"> <label for="form_need"><h4><b>Start Date Timezone</b></h4></label> 
                                             <select name="start_timezone" id="start_timezone" class="form-control">
                                                 <option value="" selected disabled>Select timezone</option>
                                                 <?php
@@ -144,14 +131,15 @@ h1 {
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+								<div class="col-md-2"></div>
+                                    <div class="col-md-4">
                                         <div class="form-group"> 
-                                            <label for="form_name">End Date *</label> 
-                                            <input id="end_date" type="text" autocomplete="off" name="end_date" class="form-control"  required="required" data-error="end date is required.">
+                                            <label for="form_name"><h4><b>End Date *</b></h4></label> 
+                                            <input id="end_date" type="text" autocomplete="off" placeholder="Enter end Date" name="end_date" class="form-control"  required="required" data-error="end date is required.">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group"> <label for="form_need">End Date Timezone</label> 
+                                    <div class="col-md-4">
+                                        <div class="form-group"> <label for="form_need"><h4><b>End Date Timezone</b></h4></label> 
                                             <select name="end_timezone" id="end_timezone" class="form-control">
                                                 <option value="" selected disabled>Select timezone</option>
                                                 <?php
@@ -164,8 +152,10 @@ h1 {
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary">Calculate</button>
+                                    <div class="col-md-12 p-2">
+									<div class="col text-center">
+										<button type="submit" class="btn btn-primary center">Calculate</button>
+									</div>
                                     </div>
                                 </div>
                             </div>
@@ -180,12 +170,12 @@ h1 {
             <div class="card mt-2 mx-auto p-4 bg-light">
                 <div class="card-body bg-light">
                     <div class="container">
-                        <h3><center>Calculate result</center></h3>
+                        <h3><center>Result</center></h3>
                         <div class="controls row ">
                             <table class="table">
                                     <thead class="thead-dark">
                                         <tr><th colspan="3">  <span id="dateselected" ></span>
-                                        <small>(Start date to the end date, but not including the end date.)</smal></th></tr>
+                                        <small>(Not including the end date.)</small></th></tr>
                                     </thead>
                                     <tbody id="numberofdays" ></tbody>
                             </table>
